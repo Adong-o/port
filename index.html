@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jakes Adongo - Student Profile</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        .profile-container {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: 100vh;
+            align-items: center;
+            padding: 20px;
+        }
+        .profile-image {
+            flex: 0 0 40%;
+            padding: 20px;
+        }
+        .profile-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .profile-details {
+            flex: 0 0 60%;
+            padding: 20px;
+        }
+        .detail {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .skill-tag {
+            background-color: rgba(33, 150, 243, 0.2);
+            color: #2196F3;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8em;
+        }
+
+        @media (max-width: 768px) {
+            .profile-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .profile-image, .profile-details {
+                flex: 0 0 100%;
+            }
+            .profile-image img {
+                max-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-image">
+            <img src="./img.jpg" alt="Student Profile">
+        </div>
+        <div class="profile-details">
+            <h1 class="detail" id="name">Jakes Adongo</h1>
+            <div class="detail" id="programme">
+                <h2>Web Design & Development Programme</h2>
+            </div>
+            <div class="detail" id="institution">
+                <strong>Institution:</strong> Riccatti Business College
+            </div>
+            <div class="detail" id="duration">
+                <strong>Course Duration:</strong> 1.6 Years Intensive
+            </div>
+            <div class="detail" id="status">
+                <strong>Status:</strong> Completed Successfully
+            </div>
+            <div class="detail" id="skills">
+                <h3>Technical Skills:</h3>
+                <div class="skills-list">
+                    <span class="skill-tag">HTML5</span>
+                    <span class="skill-tag">CSS3</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Responsive Design</span>
+                    <span class="skill-tag">UI/UX</span>
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">Data Analysis</span>
+                </div>
+            </div>
+            <div class="detail" id="project">
+                <h3>Capstone Project</h3>
+                <p>Interactive Portfolio Website: A responsive personal portfolio demonstrating 
+                advanced web development skills, implemented with modern technologies and 
+                clean design principles.</p>
+            </div>
+            <div class="detail" id="remarks">
+                <h3>Final Remarks</h3>
+                <p>Demonstrated exceptional learning agility, creativity, and technical 
+                problem-solving skills throughout the web development programme.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const details = document.querySelectorAll('.detail');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, index * 200);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            details.forEach(detail => {
+                observer.observe(detail);
+            });
+        });
+    </script>
+</body>
+</html>
